@@ -7,6 +7,9 @@
    <script>
       const ROOM_ID = "<%= roomId %>"
    </script>
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+   
+    <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
    <script defer src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -41,9 +44,61 @@
    <div class="main">
       <div class="main__left">
          <div class="main__videos">
-            <div id="video-grid">
-               <h1 class="displayName" >Brsadsdasdasdasdyanasdsadasdasdasd</h1>
-            </div>
+            <!-- <div id="video-grid">
+               
+            </div> -->
+            
+
+            <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+
+
+            <!-- <h1 id="username"></h1> -->
+                <video id="webcam" autoplay playsinline width="640" height="480"></video>
+            
+            
+            <button onclick="startCam()">Start</button>
+            <button onclick="stopCam()">Stop</button>
+            
+            <script>
+            const webcamElement = document.getElementById('webcam');
+            const username = "bryan"
+            const webcam = new Webcam(webcamElement, username);
+            // document.getElementById('username').innerHTML = username;
+            
+            
+            function startCam(){
+            webcam.start()
+               .then(result =>{
+                  console.log("webcam started");
+               })
+               .catch(err => {
+                   console.log(err);
+               });
+              }
+            function stopCam(){
+              webcam.stop()
+               .then(result =>{
+                  console.log("webcam stop");
+               })
+               .catch(err => {
+                   console.log(err);
+               });
+            }
+            
+            </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
          </div>
          <div class="main__controls">
             <div class="main__controls__block">
@@ -94,6 +149,8 @@
    </div>
 </body>
 </html>
+
+
 
 
 
