@@ -44,62 +44,107 @@
    <div class="main">
       <div class="main__left">
          <div class="main__videos">
-            <!-- <div id="video-grid">
+            <div id="video-grid">
+               <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
+
+
+               <!-- <h1 id="username"></h1> -->
+                   <video id="webcam" autoplay playsinline width="640" height="480"></video>
                
-            </div> -->
+               
+               <button onclick="startCam()">Start</button>
+               <button onclick="stopCam()">Stop</button>
+               
+               <script>
+               const webcamElement = document.getElementById('webcam');
+               const username = "bryan"
+               const webcam = new Webcam(webcamElement, username);
+               // document.getElementById('username').innerHTML = username;
+               
+               
+               function startCam(){
+               webcam.start()
+                  .then(result =>{
+                     console.log("webcam started");
+                  })
+                  .catch(err => {
+                      console.log(err);
+                  });
+                 }
+               function stopCam(){
+                 webcam.stop()
+                  .then(result =>{
+                     console.log("webcam stop");
+                  })
+                  .catch(err => {
+                      console.log(err);
+                  });
+               }
+               
+               </script>
+            </div>
+
+
+
+
+
             
-
-            <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
-
-
-            <!-- <h1 id="username"></h1> -->
-                <video id="webcam" autoplay playsinline width="640" height="480"></video>
-            
-            
-            <button onclick="startCam()">Start</button>
-            <button onclick="stopCam()">Stop</button>
-            
-            <script>
-            const webcamElement = document.getElementById('webcam');
-            const username = "bryan"
-            const webcam = new Webcam(webcamElement, username);
-            // document.getElementById('username').innerHTML = username;
-            
-            
-            function startCam(){
-            webcam.start()
-               .then(result =>{
-                  console.log("webcam started");
-               })
-               .catch(err => {
-                   console.log(err);
-               });
-              }
-            function stopCam(){
-              webcam.stop()
-               .then(result =>{
-                  console.log("webcam stop");
-               })
-               .catch(err => {
-                   console.log(err);
-               });
-            }
-            
-            </script>
-
-
-
-
-
-
-
-
-
-
-
-
+         </div>
+         <div class="main__controls">
+            <div class="main__controls__block">
+               <div onclick="muteUnmute()" class="main__controls__button main__mute_button">
+                  <i class="fas fa-microphone"></i>
+                  <span>Mute</span>
+               </div>
+               <div onclick="playStop(this)" class="main__controls__button main__video_button" >
+                  <i class="fas fa-video"></i>
+                  <span>Stop Video</span>
+               </div>
+            </div>
+            <div class="main__controls__block">
+               <div class="main__controls__button">
+                  <i class="fas fa-shield-alt"></i>
+                  <span>Security</span>
+               </div>
+               <div class="main__controls__button">
+                  <i class="fas fa-user-friends"></i>
+                  <span>Participants</span>
+               </div>
+               <div onclick="openChat()" class="main__controls__button">
+                  <i class="fas fa-comment-alt"></i>
+                  <span>Chat</span>
+               </div>
+            </div>
+            <div class="main__controls__block">
+               <div class="main__controls__button">
+                  <span class="leave_meeting">Leave Meeting</span>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="main__right">
+         <div class="main__header">
+            <h6>Chat</h6><span class="main__controls__button" onclick="closeChat()"><a href='#'>x</a></span>
+         </div>
+         <div class="main__chat_window">
+            <ul class="messages">
+               
+            </ul>
 
          </div>
+         <div class="main__message_container">
+            <input id="chat_message" type="text" placeholder="Type message here...">
+         </div>
+      </div>
+   </div>
+</body>
+</html>
+
+
+
+
+
+
          <div class="main__controls">
             <div class="main__controls__block">
                <div onclick="muteUnmute()" class="main__controls__button main__mute_button">
