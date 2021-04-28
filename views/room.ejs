@@ -3,7 +3,7 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Document</title>
+   <title>VideoChat</title>
    <script>
       const ROOM_ID = "<%= roomId %>"
    </script>
@@ -21,11 +21,19 @@
          justify-content: center;
          flex-wrap: wrap;
       }
+      
       video{
          height: 300px;
          width: 400px;
          object-fit: cover;
          padding: 8px;
+      }
+
+      .displayName{
+         color: aliceblue;
+         position: absolute;
+         margin-block-start: 11%; 
+         display: none;
       }
    </style>
 </head>
@@ -34,7 +42,7 @@
       <div class="main__left">
          <div class="main__videos">
             <div id="video-grid">
-      
+               <h1 class="displayName" >Brsadsdasdasdasdyanasdsadasdasdasd</h1>
             </div>
          </div>
          <div class="main__controls">
@@ -43,7 +51,7 @@
                   <i class="fas fa-microphone"></i>
                   <span>Mute</span>
                </div>
-               <div onclick="playStop()" class="main__controls__button main__video_button" >
+               <div onclick="playStop(this)" class="main__controls__button main__video_button" >
                   <i class="fas fa-video"></i>
                   <span>Stop Video</span>
                </div>
@@ -57,7 +65,7 @@
                   <i class="fas fa-user-friends"></i>
                   <span>Participants</span>
                </div>
-               <div class="main__controls__button">
+               <div onclick="openChat()" class="main__controls__button">
                   <i class="fas fa-comment-alt"></i>
                   <span>Chat</span>
                </div>
@@ -71,7 +79,7 @@
       </div>
       <div class="main__right">
          <div class="main__header">
-            <h6>Chat</h6>
+            <h6>Chat</h6><span class="main__controls__button" onclick="closeChat()"><a href='#'>x</a></span>
          </div>
          <div class="main__chat_window">
             <ul class="messages">
@@ -86,3 +94,6 @@
    </div>
 </body>
 </html>
+
+
+
