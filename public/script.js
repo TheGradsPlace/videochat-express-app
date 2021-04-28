@@ -70,13 +70,10 @@ function addVideoStream(video, stream) {
   videoGrid.append(video)
 }
 
-
-
 const scrollToBottom = () => {
   var d = $('.main__chat_window');
   d.scrollTop(d.prop("scrollHeight"));
 }
-
 
 const muteUnmute = () => {
   const enabled = myVideoStream.getAudioTracks()[0].enabled;
@@ -94,6 +91,7 @@ const playStop = () => {
   let enabled = myVideoStream.getVideoTracks()[0].enabled;
   if (enabled) {
     myVideoStream.getVideoTracks()[0].enabled = false;
+    
     setPlayVideo()
   } else {
     setStopVideo()
@@ -123,6 +121,9 @@ const setStopVideo = () => {
     <span>Stop Video</span>
   `
   document.querySelector('.main__video_button').innerHTML = html;
+  document.querySelector(".displayName").style.display = "none";
+  
+  
 }
 
 const setPlayVideo = () => {
@@ -131,4 +132,18 @@ const setPlayVideo = () => {
     <span>Play Video</span>
   `
   document.querySelector('.main__video_button').innerHTML = html;
+  document.querySelector(".displayName").style.display = "block";
 }
+
+const openChat = () => {
+  document.querySelector(".main__right").style.display = "flex";
+  document.querySelector(".main__right").style.flex = "0.2";
+  document.querySelector(".main__left").style.flex = "0.8";
+}
+
+const closeChat = () => {
+  document.querySelector(".main__right").style.display = "none";
+      document.querySelector(".main__right").style.flex = "0";
+      document.querySelector(".main__left").style.flex = "1";
+}
+
