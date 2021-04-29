@@ -63,11 +63,11 @@ function connectToNewUser(userId, stream) {
 }
 
 function addVideoStream(video, stream) {
-  video.srcObject = stream
-  video.addEventListener('loadedmetadata', () => {
-    video.play()
-  })
-  videoGrid.append(video)
+  // video.srcObject = stream
+  // video.addEventListener('loadedmetadata', () => {
+  //   video.play()
+  // })
+  // videoGrid.append(video)
 }
 
 const scrollToBottom = () => {
@@ -146,4 +146,3 @@ const closeChat = () => {
       document.querySelector(".main__right").style.flex = "0";
       document.querySelector(".main__left").style.flex = "1";
 }
-
