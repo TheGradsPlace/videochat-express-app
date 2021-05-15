@@ -6,7 +6,11 @@ const myPeer = new Peer(undefined, {
   port: '443'
 })
 let myVideoStream;
-const userName = "bryan"
+
+let userName = prompt('Type here');
+
+
+// const userName = document.getElementById('username')
 const myVideo = document.createElement('video')
 myVideo.muted = true;
 const peers = {}
