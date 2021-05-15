@@ -45,43 +45,7 @@
       <div class="main__left">
          <div class="main__videos">
             <div id="video-grid">
-               <script type="text/javascript" src="https://unpkg.com/webcam-easy/dist/webcam-easy.min.js"></script>
-
-
-               <!-- <h1 id="username"></h1> -->
-                   <video id="webcam" autoplay playsinline width="640" height="480"></video>
-               
-               
-               <button onclick="startCam()">Start</button>
-               <button onclick="stopCam()">Stop</button>
-               
-               <script>
-               const webcamElement = document.getElementById('webcam');
-               const username = "bryan"
-               const webcam = new Webcam(webcamElement, username);
-               // document.getElementById('username').innerHTML = username;
-               
-               
-               function startCam(){
-               webcam.start()
-                  .then(result =>{
-                     console.log("webcam started");
-                  })
-                  .catch(err => {
-                      console.log(err);
-                  });
-                 }
-               function stopCam(){
-                 webcam.stop()
-                  .then(result =>{
-                     console.log("webcam stop");
-                  })
-                  .catch(err => {
-                      console.log(err);
-                  });
-               }
-               
-               </script>
+      
             </div>
 
 
