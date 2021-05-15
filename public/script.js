@@ -63,17 +63,20 @@ function connectToNewUser(userId, stream) {
 }
 
 function addVideoStream(video, stream) {
-  // video.srcObject = stream
-  // video.addEventListener('loadedmetadata', () => {
-  //   video.play()
-  // })
-  // videoGrid.append(video)
+  video.srcObject = stream
+  video.addEventListener('loadedmetadata', () => {
+    video.play()
+  })
+  videoGrid.append(video)
 }
+
+
 
 const scrollToBottom = () => {
   var d = $('.main__chat_window');
   d.scrollTop(d.prop("scrollHeight"));
 }
+
 
 const muteUnmute = () => {
   const enabled = myVideoStream.getAudioTracks()[0].enabled;
@@ -91,7 +94,6 @@ const playStop = () => {
   let enabled = myVideoStream.getVideoTracks()[0].enabled;
   if (enabled) {
     myVideoStream.getVideoTracks()[0].enabled = false;
-    
     setPlayVideo()
   } else {
     setStopVideo()
@@ -121,9 +123,6 @@ const setStopVideo = () => {
     <span>Stop Video</span>
   `
   document.querySelector('.main__video_button').innerHTML = html;
-  document.querySelector(".displayName").style.display = "none";
-  
-  
 }
 
 const setPlayVideo = () => {
@@ -132,7 +131,6 @@ const setPlayVideo = () => {
     <span>Play Video</span>
   `
   document.querySelector('.main__video_button').innerHTML = html;
-  document.querySelector(".displayName").style.display = "block";
 }
 
 const openChat = () => {
