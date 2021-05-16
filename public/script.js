@@ -6,11 +6,6 @@ const myPeer = new Peer(undefined, {
   port: '443'
 })
 let myVideoStream;
-
-let userName = prompt('Type here');
-
-
-// const userName = document.getElementById('username')
 const myVideo = document.createElement('video')
 myVideo.muted = true;
 const peers = {}
@@ -28,9 +23,42 @@ navigator.mediaDevices.getUserMedia({
     })
   })
 
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
   socket.on('user-connected', userId => {
     connectToNewUser(userId, stream)
   })
+
+
+
+  var username = $("#username")
+	var send_username = $("#send_username")
+	//Emit a username
+	send_username.click(function(){
+		socket.emit('change_username', {username : username.val()})
+	})
+
+
+
+
+
+
   // input value
   let text = $("input");
   // when press enter send message
@@ -40,8 +68,8 @@ navigator.mediaDevices.getUserMedia({
       text.val('')
     }
   });
-  socket.on("createMessage", message => {
-    $("ul").append(`<li class="message"><b>${userName}</b><br/>${message}</li>`);
+  socket.on("createMessage", message,username => {
+    $("ul").append(`<li class="message"><b>${username}</b><br/>${message}</li>`);
     scrollToBottom()
   })
 })
@@ -53,6 +81,27 @@ socket.on('user-disconnected', userId => {
 myPeer.on('open', id => {
   socket.emit('join-room', ROOM_ID, id)
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function connectToNewUser(userId, stream) {
   const call = myPeer.call(userId, stream)
