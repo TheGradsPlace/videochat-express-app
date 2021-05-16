@@ -25,39 +25,9 @@ navigator.mediaDevices.getUserMedia({
 
 
 
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
   socket.on('user-connected', userId => {
     connectToNewUser(userId, stream)
   })
-
-
-
-  var username = $("#username")
-	var send_username = $("#send_username")
-	//Emit a username
-	send_username.click(function(){
-		socket.emit('change_username', {username : username.val()})
-	})
-
-
-
-
-
 
   // input value
   let text = $("input");
@@ -81,24 +51,6 @@ socket.on('user-disconnected', userId => {
 myPeer.on('open', id => {
   socket.emit('join-room', ROOM_ID, id)
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -198,3 +150,63 @@ const closeChat = () => {
       document.querySelector(".main__right").style.flex = "0";
       document.querySelector(".main__left").style.flex = "1";
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//buttons and inputs
+	var message = $("#message")
+	var send_message = $("#send_message")
+
+
+	var username = $("#username")
+	var send_username = $("#send_username")
+	//Emit a username
+	send_username.click(function(){
+		socket.emit('change_username', {username : username.val()})
+	})
+
+//Emit typing
+	message.bind("keypress", () => {
+		socket.emit('typing')
+	})
+
+
+
+
+  
+
+
+
+  //Listen on typing
+	socket.on('typing', (data) => {
+		feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
+	})
+
+	var chatroom = $("#chatroom")
+	var feedback = $("#feedback")
+
+	//Emit message
+	send_message.click(function(){
+		socket.emit('new_message', {message : message.val()})
+	})
+
+	//Listen on new_message
+	socket.on("new_message", (data) => {
+		feedback.html('');
+		message.val('');
+		chatroom.append("<p class='message'>" + data.username + ": " + data.message + "</p>")
+	})
