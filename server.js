@@ -22,6 +22,7 @@ app.get('/', (req, res) => {
 
 
 
+
 app.get('/:room', (req, res) => {
   res.render('room', { roomId: req.params.room })
 })
